@@ -29,6 +29,7 @@ Documentation
 Requirements
 ------------
 
+<<<<<<< HEAD
 **General:**
 - Basic knowledge of Ansible, below are some links to the Ansible documentation to help get started if you are unfamiliar with Ansible
   - [Main Ansible documentation page](https://docs.ansible.com)
@@ -41,6 +42,17 @@ Requirements
 **Technical Dependencies:**
 - Running Ansible/Tower setup (this role is tested against Ansible version 2.9.1 and newer)
 - Python3 Ansible run environment
+=======
+General:
+- Basic knowledge of Ansible, here are some links to the Ansible documentation to help get started if you are unfamiliar with Ansible
+  - [Here is the main Ansible documentation page](https://docs.ansible.com)
+- Ansible and/or Tower Installed, configured, and running. This includes all of the base Ansible/Tower configurations, infrastructure setup, and needed packages installed. 
+- Please read through the tasks in this role to gain an understanding of what each control is doing. Some of the tasks are disruptive and can have unintended consiquences in live production systems. With this also familiarize yourself with the variables in the defaults/main.yml file
+
+Technical Dependencies :
+- Running Ansible/Tower setup (this role is tested against Ansible version 2.9.1 and newer)
+- Python3 Ansibl run environment
+>>>>>>> readme edits 2
 - python-def (should be included in RHEL/CentOS 8)
 - libselinux-python
 
