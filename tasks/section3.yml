@@ -316,6 +316,19 @@
       - patch
       - rule_3.3.3
 
+- name: "SCORED | 3.3.4 | PATCH | Ensure TIPC is disabled"
+  lineinfile:
+      dest: /etc/modprobe.d/CIS.conf
+      regexp: "^(#)?install tipc(\\s|$)"
+      line: "install tipc /bin/true"
+      create: yes
+  when:
+      - rhel8cis_rule_3_3_4
+  tags:
+      - level2
+      - patch
+      - rule_3.3.4
+
 - name: "SCORED | 3.4.1.1 | PATCH | Ensure a Firewall package is installed"
   dnf:
       name: "{{ rhel8cis_firewall }}"
@@ -356,10 +369,15 @@
       - rule_3_4_2_2
 
 - name: "SCORED | 3.4.2.3 | PATCH | Ensure nftables is not enabled"
-  service:
-      name: nftables
-      state: stopped
-      enabled: no
+  block:
+      - name: "SCORED | 3.4.2.3 | PATCH | Ensure nftables is not enabled | Disable and stop service"
+        service:
+            name: nftables
+            state: stopped
+            enabled: no
+
+      - name: "SCORED | 3.4.2.3 | PATCH | Ensure nftables is not enabled | Mask service"
+        command: systemctl --now mask nftables
   when:
       - rhel8cis_firewall == "firewalld"
       - rhel8cis_rule_3_4_2_3
