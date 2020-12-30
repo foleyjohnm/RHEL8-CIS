@@ -492,6 +492,10 @@ rhel8cis_shell_session_timeout:
 # RHEL-08-5.4.1.5 Allow ansible to expire password for account with a last changed date in the future. False will just display users in violation, true will expire those users passwords
 rhel8cis_futurepwchgdate_autofix: true
 
+# 5.7 wheel groups
+# rhel8cis_wheel_users are the user list that you want to be part of the wheel group
+rhel8cis_wheel_users:
+    - root
 ## Section6 vars
 
 # RHEL-08_6.1.1 Allow ansible to adjust package descrepancies . False will just display packages with descrepancies, True will correct descrepancies
