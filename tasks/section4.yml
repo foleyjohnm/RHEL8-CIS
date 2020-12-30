@@ -109,9 +109,13 @@
 - name: "SCORED | 4.1.2.3 | PATCH | Ensure system is disabled when audit logs are full"
   lineinfile:
       dest: /etc/audit/auditd.conf
-      regexp: "^admin_space_left_action"
-      line: "admin_space_left_action = {{ rhel8cis_auditd['admin_space_left_action'] }}"
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
       state: present
+  with_items:
+      - { regexp: '^space_left_action', line: "space_left_action = email" }
+      - { regexp: '^action_mail_acct', line: "action_mail_acct = root" }
+      - { regexp: '^admin_space_left_action', line: "admin_space_left_action = {{ rhel8cis_auditd['admin_space_left_action'] }}"}
   when:
       - rhel8cis_rule_4_1_2_3
   notify: restart auditd
@@ -588,7 +592,7 @@
       - rule_4.2.2.3
 
 - name: "SCORED | 4.2.3 | PATCH | Ensure permissions on all logfiles are configured"
-  command: find /var/log -type f -exec chmod g-wx,o-rwx {} + -o -type d -exec chmod g-w,o-rwx "{}" +
+  shell: find /var/log -type f -exec chmod g-wx,o-rwx {} + -o -type d -exec chmod g-w,o-rwx "{}" +
   changed_when: no
   failed_when: no
   when:
