@@ -871,7 +871,7 @@
 
       - name: "SCORED | 5.7 | PATCH | Ensure access to the su command is restricted | wheel group contains root"
         user:
-            name: {{ item }}
+            name: "{{ item }}"
             groups: wheel
         with_items:
             - "{{ rhel8cis_wheel_users }}"
