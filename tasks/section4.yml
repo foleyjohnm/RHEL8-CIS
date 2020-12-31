@@ -3,6 +3,8 @@
   block:
       - name: "SCORED | 4.1.1.1 | PATCH | Ensure auditd is installed | Check for auditd packages"
         command: rpm -q audit audit-libs
+        args:
+            warn: false
         become: true
         failed_when: no
         changed_when: no
