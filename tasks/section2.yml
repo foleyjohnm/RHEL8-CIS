@@ -50,7 +50,9 @@
       - rule_2.2.1.2
 
 - name: "SCORED | 2.2.2 | PATCH | Ensure X Window System is not installed"
-  shell: dnf -y remove xorg-x11*
+  package: 
+    name: xorg-x11*
+    state: absent
   when:
       - not rhel8cis_xwindows_required
       - rhel8cis_rule_2_2_2
