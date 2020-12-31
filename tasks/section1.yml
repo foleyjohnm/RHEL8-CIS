@@ -104,7 +104,7 @@
   block:
       - name: "SCORED | 1.1.2 | PATCH | Ensure /tmp is configured | change mount options in config file for systemd"
         lineinfile:
-            path: /etc/selinux/config
+            path: /etc/systemd/system/tmp.mount
             regexp: "^Options=mode"
             line: "Options=mode=1777,strictatime,noexec,nodev,nosuid"
 
