@@ -160,6 +160,8 @@
 
 - name: "SCORED | 1.1.7 | PATCH | Ensure separate partition exists for /var/tmp"
   shell: mount | grep "on /var/tmp "
+  args:
+      warn: false
   register: var_tmp_mounted
   changed_when: no
   failed_when: no
