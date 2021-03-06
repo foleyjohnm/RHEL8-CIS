@@ -10,7 +10,7 @@ Based on [CIS RedHat Enterprise Linux 8 Benchmark v1.0.0 - 09-30-2019 ](https://
 
 Caution(s)
 -------
-This role **will make changes to the system** which may have unintended concequences. This is not an auditing tool but rather a remediation tool to be used after an audit has been conducted.
+This role **will make changes to the system** which may have unintended concequences. This is not an auditing tool but rather a remediation tool to be used after an audit has been conducted
 
 This role was developed against a clean install of the Operating System. If you are implimenting to an existing system please review this role for any site specific changes that are needed.
 
